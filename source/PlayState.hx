@@ -1186,52 +1186,6 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(startText, {alpha: 0}, 1);
 						FlxTween.tween(blackFuck, {alpha: 0}, 1);
 					});
-				else if (curSong.toLowerCase() == 'personel')
-				{
-					add(blackFuck);
-					startCircle.loadGraphic(Paths.image('StartScreens/CirclePersonel', 'exe'));
-					startCircle.x += 777;
-					add(startCircle);
-					startText.loadGraphic(Paths.image('StartScreens/TextPersonel', 'exe'));
-					startText.x -= 1200;
-					add(startText);
-					
-					new FlxTimer().start(0.6, function(tmr:FlxTimer)
-					{
-						FlxTween.tween(startCircle, {x: 0}, 0.5);
-						FlxTween.tween(startText, {x: 0}, 0.5);
-					});
-					
-					new FlxTimer().start(1.9, function(tmr:FlxTimer)
-						{
-						FlxTween.tween(startCircle, {alpha: 0}, 1);
-						FlxTween.tween(startText, {alpha: 0}, 1);
-						FlxTween.tween(blackFuck, {alpha: 0}, 1);
-					});
-				}
-				else if (curSong.toLowerCase() == 'milk')
-				{
-					add(blackFuck);
-					startCircle.loadGraphic(Paths.image('StartScreens/Sunky', 'exe'));
-					startCircle.x += 777;
-					add(startCircle);
-					startText.loadGraphic(Paths.image('StartScreens/TextMilk', 'exe'));
-					startText.x -= 1200;
-					add(startText);
-					
-					new FlxTimer().start(0.6, function(tmr:FlxTimer)
-					{
-						FlxTween.tween(startCircle, {x: 0}, 0.5);
-						FlxTween.tween(startText, {x: 0}, 0.5);
-					});
-					
-					new FlxTimer().start(1.9, function(tmr:FlxTimer)
-						{
-						FlxTween.tween(startCircle, {alpha: 0}, 1);
-						FlxTween.tween(startText, {alpha: 0}, 1);
-						FlxTween.tween(blackFuck, {alpha: 0}, 1);
-					});
-				}
 
 
 				}
@@ -1252,8 +1206,6 @@ class PlayState extends MusicBeatState
 
 	function staticHitMiss()
 		{
-			trace ('lol you missed the static note!');
-
 			var daNoteStatic:FlxSprite = new FlxSprite(0,0);
 
 			daNoteStatic.frames = Paths.getSparrowAtlas('hitStatic');
@@ -3207,13 +3159,16 @@ class PlayState extends MusicBeatState
 							video.playMP4(Paths.video('tooslowcutscene2'), new UnlockScreen(false, 'soundtest')); 
 
 						//LoadingState.loadAndSwitchState(new UnlockScreen(false, 'soundtest'));
-
-						}
+					}
+					else if (curSong.toLowerCase() == 'you-cant-run' && storyDifficulty == 2)
+					{
+						var video:MP4Handler = new MP4Handler();
+						video.playMP4(Paths.video('youcantruncutscene2');
+					}
 						
 
 					
 					
-
 					#if windows
 					if (luaModchart != null)
 					{
@@ -4333,6 +4288,11 @@ class PlayState extends MusicBeatState
 			{
 				shakeCam = false;
 				shakeCam2 = false;
+			}
+
+		if (dad.curCharacter == 'coldsteel' && SONG.song.toLowerCase() == 'personel' && curStep == 101)
+			{
+			    FlxG.sound.play(Paths.sound('ANGRY', 'shared'), 0.7);
 			}
 
 		if (curStage == 'sonicFUNSTAGE' && curStep != stepOfLast)
