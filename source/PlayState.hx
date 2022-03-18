@@ -204,10 +204,12 @@ class PlayState extends MusicBeatState
 	var hands:FlxSprite;
 	var tree:FlxSprite;
 	var eyeflower:FlxSprite;
+	var shittynewflower:FlxSprite;
 	var blackFuck:FlxSprite;
 	var startCircle:FlxSprite;
 	var startText:FlxSprite;
-
+	var coldfloor:FlxSprite;
+	var sunk:FlxSprite;
 
 	var fc:Bool = true;
 
@@ -267,7 +269,6 @@ class PlayState extends MusicBeatState
 
 		startCircle = new FlxSprite();
 		startText = new FlxSprite();
-
 
 		spinArray = [272, 276, 336, 340, 400, 404, 464, 468, 528, 532, 592, 596, 656, 660, 720, 724, 789, 793, 863, 867, 937, 941, 1012, 1016, 1086, 1090, 1160, 1164, 1531, 1535, 1607, 1611, 1681, 1685, 1754, 1758];
 
@@ -529,8 +530,8 @@ class PlayState extends MusicBeatState
 					add(floor);
 
 					eyeflower = new FlxSprite(-200,300);
-					eyeflower.frames = Paths.getSparrowAtlas('LordXStage/ANIMATEDeye', 'exe');
-					eyeflower.animation.addByPrefix('animatedeye', 'EyeAnimated', 24);
+					eyeflower.frames = Paths.getSparrowAtlas('LordXStage/WeirdAssFlower_Assets', 'exe');
+					eyeflower.animation.addByPrefix('animatedeye', 'flower', 24);
 					eyeflower.setGraphicSize(Std.int(eyeflower.width * 2));
 					eyeflower.antialiasing = true;
 					eyeflower.scrollFactor.set(1, 1);
@@ -623,7 +624,36 @@ class PlayState extends MusicBeatState
 
 						
 					}
+			case 'coldsteelstage':
+				{	
+				defaultCamZoom = 1.1;
+				curStage = 'coldsteelstage';
 
+
+
+				var coldfloor:FlxSprite = new FlxSprite(-300, 0).loadGraphic(Paths.image('ColdSteelStage/floor'));
+				coldfloor.antialiasing = true;
+				coldfloor.scrollFactor.set(0.85, 0.85);
+				coldfloor.active = false;
+				add(coldfloor);
+
+
+				}
+			case 'sunkylol':
+				{	
+				defaultCamZoom = 1.0;
+				curStage = 'sunkylol';
+
+
+
+				var sunk:FlxSprite = new FlxSprite(-300, 0).loadGraphic(Paths.image('SunkStage/SunkBG'));
+				sunk.antialiasing = true;
+				sunk.scrollFactor.set(0.85, 0.85);
+				sunk.active = false;
+				add(sunk);
+
+
+				}
 			case 'stage':
 				{
 						defaultCamZoom = 0.9;
@@ -1156,6 +1186,53 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(startText, {alpha: 0}, 1);
 						FlxTween.tween(blackFuck, {alpha: 0}, 1);
 					});
+				else if (curSong.toLowerCase() == 'personel')
+				{
+					add(blackFuck);
+					startCircle.loadGraphic(Paths.image('StartScreens/CirclePersonel', 'exe'));
+					startCircle.x += 777;
+					add(startCircle);
+					startText.loadGraphic(Paths.image('StartScreens/TextPersonel', 'exe'));
+					startText.x -= 1200;
+					add(startText);
+					
+					new FlxTimer().start(0.6, function(tmr:FlxTimer)
+					{
+						FlxTween.tween(startCircle, {x: 0}, 0.5);
+						FlxTween.tween(startText, {x: 0}, 0.5);
+					});
+					
+					new FlxTimer().start(1.9, function(tmr:FlxTimer)
+						{
+						FlxTween.tween(startCircle, {alpha: 0}, 1);
+						FlxTween.tween(startText, {alpha: 0}, 1);
+						FlxTween.tween(blackFuck, {alpha: 0}, 1);
+					});
+				}
+				else if (curSong.toLowerCase() == 'milk')
+				{
+					add(blackFuck);
+					startCircle.loadGraphic(Paths.image('StartScreens/Sunky', 'exe'));
+					startCircle.x += 777;
+					add(startCircle);
+					startText.loadGraphic(Paths.image('StartScreens/TextMilk', 'exe'));
+					startText.x -= 1200;
+					add(startText);
+					
+					new FlxTimer().start(0.6, function(tmr:FlxTimer)
+					{
+						FlxTween.tween(startCircle, {x: 0}, 0.5);
+						FlxTween.tween(startText, {x: 0}, 0.5);
+					});
+					
+					new FlxTimer().start(1.9, function(tmr:FlxTimer)
+						{
+						FlxTween.tween(startCircle, {alpha: 0}, 1);
+						FlxTween.tween(startText, {alpha: 0}, 1);
+						FlxTween.tween(blackFuck, {alpha: 0}, 1);
+					});
+				}
+
 
 				}
 			switch (curSong.toLowerCase())
