@@ -77,25 +77,15 @@ class SoundTestMenu extends MusicBeatState
 			soundtesttext.setFormat("Sonic CD Menu Font Regular", 25, FlxColor.fromRGB(0, 163, 255));
 			soundtesttext.setBorderStyle(SHADOW, FlxColor.BLACK, 4, 1);
 			add(soundtesttext);
-			
-
 
 			pcmNO.setFormat("Sonic CD Menu Font Regular", 23, FlxColor.fromRGB(174, 179, 251));
 			pcmNO.setBorderStyle(SHADOW, FlxColor.fromRGB(106, 110, 159), 4, 1);
-
 			daNO.setFormat("Sonic CD Menu Font Regular", 23, FlxColor.fromRGB(174, 179, 251));
 			daNO.setBorderStyle(SHADOW, FlxColor.fromRGB(106, 110, 159), 4, 1);
-
-
-
-			
 			pcmNO.y -= 70;
 			pcmNO.x += 100;
-
 			daNO.y -= 70;
-			
 			add(pcmNO);
-
 			add(daNO);
 
 			
@@ -120,9 +110,6 @@ class SoundTestMenu extends MusicBeatState
 
 			cameoImg.visible = false;
 			add(cameoImg);
-
-
-
 			add(whiteshit);
 
 			
@@ -191,156 +178,38 @@ class SoundTestMenu extends MusicBeatState
 					LoadingState.loadAndSwitchState(new PlayState());
 				});
 			}
-		else if (first == 3 && second == 1) 
-		{
-			woahmanstopspammin = false;
-			flashyWashy(true);
-			new FlxTimer().start(2, function(tmr:FlxTimer)
-			{
-				cameoImg.visible = true;
-				cameoImg.loadGraphic(Paths.image('cameostuff/Rightburst'));
-				flashyWashy(false);
-				FlxG.sound.music.stop();
-
-			});
-			new FlxTimer().start(2.1, function(tmr:FlxTimer)
-			{
-				FlxG.sound.playMusic(Paths.music('cameostuff/Rightburst'));	
-				incameo = true;
-			});
-		}
-		else if (first == 12 && second == 11)
-		{
-			woahmanstopspammin = false;
-			flashyWashy(true);
-			new FlxTimer().start(2, function(tmr:FlxTimer)
-			{
-				cameoBg.visible = true;
-				cameoBg.frames = Paths.getSparrowAtlas('cameostuff/VaniaBG');
-				FlxG.log.add(cameoBg.visible); 
-				cameoBg.animation.addByPrefix('wave', 'VaniaBG', 24, true);				
-				cameoImg.visible = true;
-				cameoBg.x -= 200;
-				cameoBg.y -= 100;
-				cameoImg.loadGraphic(Paths.image('cameostuff/Vania'));
-				cameoImg.x += 270;
-				cameoImg.y -= 50;
-				flashyWashy(false);
-				FlxG.sound.music.stop();
-			});
-			new FlxTimer().start(2.1, function(tmr:FlxTimer)
-			{
-				cameoBg.animation.play('wave');
-				FlxG.sound.playMusic(Paths.music('cameostuff/Vania'));	
-				incameo = true;
-			});
-		}
-		else if (first == 41 && second == 1) 
-		{
-			woahmanstopspammin = false;
-			flashyWashy(true);
-			new FlxTimer().start(2, function(tmr:FlxTimer)
-			{
-				cameoImg.visible = true;
-				cameoImg.loadGraphic(Paths.image('cameostuff/Razencro'));
-				cameoImg.setSize(1280, 720);
-				flashyWashy(false);
-				FlxG.sound.music.stop();
-
-			});
-			new FlxTimer().start(2.1, function(tmr:FlxTimer)
-			{
-				FlxG.sound.playMusic(Paths.music('cameostuff/Razencro'));	
-				incameo = true;
-			});
-		}
-		else if (first == 69 && second == 27) 
-		{
-			woahmanstopspammin = false;
-			flashyWashy(true);
-			new FlxTimer().start(2, function(tmr:FlxTimer)
-			{
-				cameoImg.visible = true;
-				cameoImg.loadGraphic(Paths.image('cameostuff/Zekuta'));
-				cameoImg.setSize(1280, 720);
-				flashyWashy(false);
-				FlxG.sound.music.stop();
-
-			});
-			new FlxTimer().start(2.1, function(tmr:FlxTimer)
-			{
-				FlxG.sound.playMusic(Paths.music('cameostuff/Zekuta'));	
-				incameo = true;
-			});
-		}
-		else if (first == 6 && second == 9) 
+		else if (first == 1 && second == 1)
 			{
 				woahmanstopspammin = false;
+				PlayStateChangeables.nocheese = false;
+				PlayState.SONG = Song.loadFromJson('milk', 'milk');
+				PlayState.isStoryMode = false;
+				PlayState.storyDifficulty = 2;
+				PlayState.storyWeek = 1;
+				FlxTransitionableState.skipNextTransIn = true;
+				FlxTransitionableState.skipNextTransOut = true;
 				flashyWashy(true);
 				new FlxTimer().start(2, function(tmr:FlxTimer)
 				{
-					cameoImg.visible = true;
-					cameoBg.visible = true;
-					cameoThanks.visible = true;
-					cameoThanks.loadGraphic(Paths.image('cameostuff/thanks'));
-					cameoThanks.setSize(1280, 720);
-					cameoImg.frames = Paths.getSparrowAtlas('cameostuff/Comgaming');
-					cameoImg.animation.addByPrefix('bounce', 'Comgaming instance 1', 20, true);	
-					cameoBg.frames = Paths.getSparrowAtlas('cameostuff/BGCOMLOL');
-					cameoBg.animation.addByPrefix('move', 'BGCOM', 19, true);
-					cameoImg.y += 5;
-					cameoImg.setSize(1280, 720);
-					cameoBg.setSize(1280, 720);
-					flashyWashy(false);
-					FlxG.sound.music.stop();
-	
-				});
-				new FlxTimer().start(2.1, function(tmr:FlxTimer)
-				{
-					cameoImg.animation.play('bounce');
-					cameoBg.animation.play('move');
-
-					FlxG.sound.playMusic(Paths.music('cameostuff/Comgaming'));	
-					incameo = true;
+					LoadingState.loadAndSwitchState(new PlayState());
 				});
 			}
-		else if (first == 11 && second == 9) 
-		{
-			woahmanstopspammin = false;
-			flashyWashy(true);
-			new FlxTimer().start(2, function(tmr:FlxTimer)
+		else if (first == 9 && second == 8)
 			{
-				cameoImg.visible = true;
-				cameoImg.loadGraphic(Paths.image('cameostuff/Crybit'));
-				cameoImg.setSize(1280, 720);
-				flashyWashy(false);
-				FlxG.sound.music.stop();
-
-			});
-			new FlxTimer().start(2.1, function(tmr:FlxTimer)
-			{
-				FlxG.sound.playMusic(Paths.music('cameostuff/Crybit'));	
-				incameo = true;
-			});
-		}
-		else if (first == 32 && second == 8) 
-		{
-			woahmanstopspammin = false;
-			flashyWashy(true);
-			new FlxTimer().start(2, function(tmr:FlxTimer)
-			{
-				cameoImg.visible = true;
-				cameoImg.loadGraphic(Paths.image('cameostuff/Marstarbro'));
-				cameoImg.setSize(1280, 720);
-				flashyWashy(false);
-				FlxG.sound.music.stop();
-
-			});
-			new FlxTimer().start(2.1, function(tmr:FlxTimer)
-			{
-				FlxG.sound.playMusic(Paths.music('cameostuff/Marstarbro'));	
-				incameo = true;
-			});
+				woahmanstopspammin = false;
+				PlayStateChangeables.nocheese = false;
+				PlayState.SONG = Song.loadFromJson('personel-hard', 'personel'); // COLDsteel
+				PlayState.isStoryMode = false;
+				PlayState.storyDifficulty = 2;
+				PlayState.storyWeek = 1;
+				FlxTransitionableState.skipNextTransIn = true;
+				FlxTransitionableState.skipNextTransOut = true;
+				flashyWashy(true);
+				new FlxTimer().start(2, function(tmr:FlxTimer)
+				{
+					LoadingState.loadAndSwitchState(new PlayState());
+				});
+			}
 		}
 		else
 		{
