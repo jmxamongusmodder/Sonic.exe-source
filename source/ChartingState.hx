@@ -249,7 +249,9 @@ class ChartingState extends MusicBeatState
 
 		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
 		{
-			loadJson(_song.song.toLowerCase());
+		         //make it look sexier if possible
+		         if (CoolUtil.difficultyArray[PlayState.storyDifficulty] != "Normal"){
+		         PlayState.SONG = Song.loadFromJson(song.toLowerCase()+"-"+CoolUtil.difficultyArray[PlayState.storyDifficulty], song.toLowerCase());
 		});
 
 		
